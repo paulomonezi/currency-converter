@@ -1,13 +1,20 @@
-import React, { Component, useState, setState, useEffect } from 'react'
+import React, { Component, useState, setState, useEffect } from "react";
 
 export default class Converter extends Component {
-
-    constructor(props){
-      super(props)
-    }
+  constructor(props) {
+    super(props)
   }
-
-
+  render() {
+    return (
+    <div className="converter">
+      <h2>{this.props.currencyA} to {this.props.currencyB}</h2>
+      <input type="text"></input>
+      <input type="button" value="Exchange"></input>
+      <h2>Converted value</h2>
+    </div>
+  )
+}
+}
 
 // export const Converter = (props) => {
 //   const [currencyA, setCurrenyA] = useState("")
