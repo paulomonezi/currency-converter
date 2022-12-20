@@ -3,12 +3,17 @@ import React, { Component, useState, setState, useEffect } from "react";
 export default class Converter extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      currencyA_value: "",
+      currencyB_value: 0,
+    }
   }
   render() {
     return (
     <div className="converter">
       <h2>{this.props.currencyA} to {this.props.currencyB}</h2>
-      <input type="text"></input>
+      <input type="text" onChange={(event)=>{this.setState({currenyA_value:event.target.value})}}></input>
       <input type="button" value="Exchange"></input>
       <h2>Converted value</h2>
     </div>
