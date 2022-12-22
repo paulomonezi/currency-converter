@@ -14,6 +14,19 @@ export default class Converter extends Component {
 
   convert(){
     console.log(this.state)
+
+    let convert_to = `${this.props.currencyA}_${this.props.currencyB}`
+    let url = `http://free.currencyconverterapi.com/api/v5/convert?q=${convert_to}&compact=y`
+
+    fetch(url)
+    .then(res=>{
+      return res.json()
+    })
+    .then(json=>{
+      let currency_value = json[convert_to].val
+      let currencyB_value = (parseFloat(this.state.currencyB_value) * currency_value).toFixed(2)
+      this.setState({currencyB_value})
+    })
   }
 
   render() {
@@ -22,7 +35,7 @@ export default class Converter extends Component {
       <h2>{this.props.currencyA} to {this.props.currencyB}</h2>
       <input type="text" onChange={(event)=>{this.setState({currenyA_value:event.target.value})}}></input>
       <input type="button" value="Exchange" onClick={this.convert}></input>
-      <h2>Converted value:</h2>
+      <h2>{this.state}</h2>
       
     </div>
   )
